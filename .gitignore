@@ -3,5 +3,4 @@ __pycache__
 records
 venv
 *sw_*.py
-*.csv
 *.npy
