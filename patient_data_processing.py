@@ -8,6 +8,8 @@ import yaml
 from pandas import DataFrame
 from pandas.core.groupby.generic import DataFrameGroupBy
 
+from feature_selection import fill_age_height_weight
+
 RECORDS_DIR = "records"
 META_DIR = "records/meta"
 ECG_DIR = "records/ecg"
@@ -80,6 +82,9 @@ def open_patient_csv(csv_fn: str) -> DataFrame:
     }
     df["diagnosi"] = df["diagnosi"].replace(diagnosi_map)
     df.rename(columns={"diagnosi": "diagnosis"}, inplace=True)
+
+    # fill missing age, height, and weight
+    df = fill_age_height_weight(df)
 
     # Replace NaN values with None
     df = df.replace(np.nan, None)
