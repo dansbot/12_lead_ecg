@@ -1,0 +1,7 @@
+__pycache__
+.mypy_cache
+records
+venv
+*sw_*.py
+*.csv
+*.npy
